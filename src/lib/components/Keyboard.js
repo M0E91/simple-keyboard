@@ -65,12 +65,6 @@ class SimpleKeyboard {
      */
     if(button === '{//}')
       return false;
-
-    /**
-     * Calling onKeyPress
-     */
-    if(typeof this.options.onKeyPress === "function")
-      this.options.onKeyPress(button);
     
     if(!this.input[this.options.inputName])
       this.input[this.options.inputName] = '';
@@ -103,7 +97,14 @@ class SimpleKeyboard {
       if(typeof this.options.onChange === "function")
         this.options.onChange(this.input[this.options.inputName]);
     }
+
+    /**
+     * Calling onKeyPress
+     */
+    if(typeof this.options.onKeyPress === "function")
+      this.options.onKeyPress(button);
     
+      
     if(debug){
       console.log("Key pressed:", button);
     }
@@ -386,7 +387,9 @@ class SimpleKeyboard {
        * Creating empty row
        */
       var rowDOM = document.createElement('div');
+      rowDOM.setAttribute('data-keyboard', "true");
       rowDOM.className += "hg-row";
+      
 
       /**
        * Iterating through each button in row
@@ -400,8 +403,10 @@ class SimpleKeyboard {
          * Creating button
          */
         var buttonDOM = document.createElement('div');
+        buttonDOM.setAttribute('data-keyboard', "true");
         buttonDOM.className += `hg-button ${fctBtnClass}${buttonThemeClass ? " "+buttonThemeClass : ""}`;
         buttonDOM.onclick = () => this.handleButtonClicked(button);
+        
 
         /**
          * Adding identifier
@@ -424,6 +429,7 @@ class SimpleKeyboard {
          * Adding button label to button
          */
         var buttonSpanDOM = document.createElement('span');
+        buttonSpanDOM.setAttribute('data-keyboard', "true");
         buttonSpanDOM.innerHTML = buttonDisplayName;
         buttonDOM.appendChild(buttonSpanDOM);
 
