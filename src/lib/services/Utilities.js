@@ -25,7 +25,7 @@ class Utilities {
       '{alt}': 'alt',
       '{s}': 'shift',
       '{tab}': 'tab ↹',
-      '{lock}': 'caps lock ⇪',
+      '{lock}': 'caps ⇪',
       '{capslock}': 'caps lock ⇪',
       '{accept}': 'Submit',
       '{space}': ' ',
